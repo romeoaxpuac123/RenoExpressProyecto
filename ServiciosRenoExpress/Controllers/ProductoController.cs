@@ -78,7 +78,10 @@ namespace ServiciosRenoExpress.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            System.Diagnostics.Debug.WriteLine("Romeeeeo");
+            System.Diagnostics.Debug.WriteLine(producto.Precio_Venta);
+            producto.Precio_Venta = Convert.ToDecimal(producto.Precio_Venta.ToString());
+            System.Diagnostics.Debug.WriteLine(producto.Precio_Venta);
             db.Producto.Add(producto);
             db.SaveChanges();
 

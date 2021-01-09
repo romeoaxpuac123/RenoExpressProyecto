@@ -214,6 +214,7 @@
       <DependentUpon>BDDRenoExpress.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Validaciones\ValidacionCliente.cs" />
+    <Compile Include="Models\Validaciones\ValidacionProducto.cs" />
     <Compile Include="Models\Validaciones\ValidacionProveedor.cs" />
     <Compile Include="Models\Validaciones\ValidacionSucursal.cs" />
     <Compile Include="Models\Venta.cs">
