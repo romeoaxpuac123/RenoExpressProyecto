@@ -165,6 +165,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\Producto_SucursalController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -215,6 +216,7 @@
     </Compile>
     <Compile Include="Models\Validaciones\ValidacionCliente.cs" />
     <Compile Include="Models\Validaciones\ValidacionProducto.cs" />
+    <Compile Include="Models\Validaciones\ValidacionProducto_Sucursal.cs" />
     <Compile Include="Models\Validaciones\ValidacionProveedor.cs" />
     <Compile Include="Models\Validaciones\ValidacionSucursal.cs" />
     <Compile Include="Models\Venta.cs">
