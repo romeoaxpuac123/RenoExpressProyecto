@@ -79,5 +79,22 @@ namespace ServiciosRenoExpress.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarDetalleCompra", codigo_CompraParameter, codigo_ProductoParameter, codigo_SucursalParameter, cantidadParameter, ultima_CantidadParameter, fecha_AdquisicionParameter);
         }
+    
+        public virtual int TotalCompra(Nullable<int> codigo_Compra, Nullable<int> codigo_Producto, Nullable<int> cantidad)
+        {
+            var codigo_CompraParameter = codigo_Compra.HasValue ?
+                new ObjectParameter("Codigo_Compra", codigo_Compra) :
+                new ObjectParameter("Codigo_Compra", typeof(int));
+    
+            var codigo_ProductoParameter = codigo_Producto.HasValue ?
+                new ObjectParameter("Codigo_Producto", codigo_Producto) :
+                new ObjectParameter("Codigo_Producto", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TotalCompra", codigo_CompraParameter, codigo_ProductoParameter, cantidadParameter);
+        }
     }
 }

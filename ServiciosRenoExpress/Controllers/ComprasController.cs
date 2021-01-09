@@ -18,6 +18,7 @@ namespace ServiciosRenoExpress.Controllers
         [HttpPost]
         public IHttpActionResult RegistrarCompra(ICollection<Models.Request.CompraRequest>  modelo )
         {
+
             return Ok("EXITO");
         }
     }
