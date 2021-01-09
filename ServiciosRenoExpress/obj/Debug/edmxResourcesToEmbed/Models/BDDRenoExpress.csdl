@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RenoExpressDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Codigo_Cliente" />
+    </Key>
+    <Property Name="Codigo_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NIT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Factura" Relationship="Self.fk_Cliente" FromRole="Cliente" ToRole="Factura" />
+  </EntityType>
+  <EntityType Name="Compra">
+    <Key>
+      <PropertyRef Name="Codigo_Compra" />
+    </Key>
+    <Property Name="Codigo_Compra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Total" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Detalle_Compra" Relationship="Self.fk_Compra" FromRole="Compra" ToRole="Detalle_Compra" />
+  </EntityType>
+  <EntityType Name="Detalle_Compra">
+    <Key>
+      <PropertyRef Name="Codigo_Compra" />
+      <PropertyRef Name="Codigo_Producto" />
+      <PropertyRef Name="Codigo_Sucursal" />
+    </Key>
+    <Property Name="Codigo_Compra" Type="Int32" Nullable="false" />
+    <Property Name="Codigo_Producto" Type="Int32" Nullable="false" />
+    <Property Name="Codigo_Sucursal" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Ultima_Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Adquisicion" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Compra" Relationship="Self.fk_Compra" FromRole="Detalle_Compra" ToRole="Compra" />
+    <NavigationProperty Name="Producto_Sucursal" Relationship="Self.fk_Producto_Sucursal" FromRole="Detalle_Compra" ToRole="Producto_Sucursal" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="Codigo_Factura" />
+    </Key>
+    <Property Name="Codigo_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Total" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Codigo_Cliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.fk_Cliente" FromRole="Factura" ToRole="Cliente" />
+    <NavigationProperty Name="Venta" Relationship="Self.fk_Factura" FromRole="Factura" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Codigo_Producto" />
+    </Key>
+    <Property Name="Codigo_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Marca" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Categoria" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Precio_Venta" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="Codigo_Proveedor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Producto_Sucursal" Relationship="Self.fk_Producto" FromRole="Producto" ToRole="Producto_Sucursal" />
+    <NavigationProperty Name="Proveedor" Relationship="Self.fk_Proveedor" FromRole="Producto" ToRole="Proveedor" />
+  </EntityType>
+  <EntityType Name="Producto_Sucursal">
+    <Key>
+      <PropertyRef Name="Codigo_Producto" />
+      <PropertyRef Name="Codigo_Sucursal" />
+    </Key>
+    <Property Name="Codigo_Producto" Type="Int32" Nullable="false" />
+    <Property Name="Codigo_Sucursal" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Ultima_Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Adquisicion" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Detalle_Compra" Relationship="Self.fk_Producto_Sucursal" FromRole="Producto_Sucursal" ToRole="Detalle_Compra" />
+    <NavigationProperty Name="Producto" Relationship="Self.fk_Producto" FromRole="Producto_Sucursal" ToRole="Producto" />
+    <NavigationProperty Name="Venta" Relationship="Self.fk_Producto_Sucursal_2" FromRole="Producto_Sucursal" ToRole="Venta" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.fk_Sucursal" FromRole="Producto_Sucursal" ToRole="Sucursal" />
+  </EntityType>
+  <EntityType Name="Proveedor">
+    <Key>
+      <PropertyRef Name="Codigo_Proveedor" />
+    </Key>
+    <Property Name="Codigo_Proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NIT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Producto" Relationship="Self.fk_Proveedor" FromRole="Proveedor" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="Codigo_Sucursal" />
+    </Key>
+    <Property Name="Codigo_Sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Producto_Sucursal" Relationship="Self.fk_Sucursal" FromRole="Sucursal" ToRole="Producto_Sucursal" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="Codigo_Factura" />
+      <PropertyRef Name="Codigo_Producto" />
+      <PropertyRef Name="Codigo_Sucursal" />
+    </Key>
+    <Property Name="Codigo_Factura" Type="Int32" Nullable="false" />
+    <Property Name="Codigo_Producto" Type="Int32" Nullable="false" />
+    <Property Name="Codigo_Sucursal" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Ultima_Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Adquisicion" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Factura" Relationship="Self.fk_Factura" FromRole="Venta" ToRole="Factura" />
+    <NavigationProperty Name="Producto_Sucursal" Relationship="Self.fk_Producto_Sucursal_2" FromRole="Venta" ToRole="Producto_Sucursal" />
+  </EntityType>
+  <Association Name="fk_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Compra">
+    <End Role="Compra" Type="Self.Compra" Multiplicity="1" />
+    <End Role="Detalle_Compra" Type="Self.Detalle_Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compra">
+        <PropertyRef Name="Codigo_Compra" />
+      </Principal>
+      <Dependent Role="Detalle_Compra">
+        <PropertyRef Name="Codigo_Compra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Producto_Sucursal">
+    <End Role="Producto_Sucursal" Type="Self.Producto_Sucursal" Multiplicity="1" />
+    <End Role="Detalle_Compra" Type="Self.Detalle_Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto_Sucursal">
+        <PropertyRef Name="Codigo_Producto" />
+        <PropertyRef Name="Codigo_Sucursal" />
+      </Principal>
+      <Dependent Role="Detalle_Compra">
+        <PropertyRef Name="Codigo_Producto" />
+        <PropertyRef Name="Codigo_Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Factura">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="Codigo_Factura" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="Codigo_Factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Producto_Sucursal" Type="Self.Producto_Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Codigo_Producto" />
+      </Principal>
+      <Dependent Role="Producto_Sucursal">
+        <PropertyRef Name="Codigo_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Proveedor">
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedor">
+        <PropertyRef Name="Codigo_Proveedor" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="Codigo_Proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Producto_Sucursal_2">
+    <End Role="Producto_Sucursal" Type="Self.Producto_Sucursal" Multiplicity="1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto_Sucursal">
+        <PropertyRef Name="Codigo_Producto" />
+        <PropertyRef Name="Codigo_Sucursal" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="Codigo_Producto" />
+        <PropertyRef Name="Codigo_Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Sucursal">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+    <End Role="Producto_Sucursal" Type="Self.Producto_Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="Codigo_Sucursal" />
+      </Principal>
+      <Dependent Role="Producto_Sucursal">
+        <PropertyRef Name="Codigo_Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RenoExpressDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Compra" EntityType="Self.Compra" />
+    <EntitySet Name="Detalle_Compra" EntityType="Self.Detalle_Compra" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" />
+    <EntitySet Name="Producto_Sucursal" EntityType="Self.Producto_Sucursal" />
+    <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+    <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Venta" EntityType="Self.Venta" />
+    <AssociationSet Name="fk_Cliente" Association="Self.fk_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Compra" Association="Self.fk_Compra">
+      <End Role="Compra" EntitySet="Compra" />
+      <End Role="Detalle_Compra" EntitySet="Detalle_Compra" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Producto_Sucursal" Association="Self.fk_Producto_Sucursal">
+      <End Role="Producto_Sucursal" EntitySet="Producto_Sucursal" />
+      <End Role="Detalle_Compra" EntitySet="Detalle_Compra" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Factura" Association="Self.fk_Factura">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Producto" Association="Self.fk_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Producto_Sucursal" EntitySet="Producto_Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Proveedor" Association="Self.fk_Proveedor">
+      <End Role="Proveedor" EntitySet="Proveedor" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Producto_Sucursal_2" Association="Self.fk_Producto_Sucursal_2">
+      <End Role="Producto_Sucursal" EntitySet="Producto_Sucursal" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Sucursal" Association="Self.fk_Sucursal">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Producto_Sucursal" EntitySet="Producto_Sucursal" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
