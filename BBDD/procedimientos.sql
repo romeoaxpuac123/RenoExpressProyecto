@@ -24,3 +24,15 @@ AS
 		WHERE Codigo_Producto=@Codigo_Producto AND Codigo_Sucursal = @Codigo_Sucursal; 
 	
 GO
+
+GO  
+CREATE PROCEDURE TotalCompra
+	@Codigo_Compra int,
+	@Codigo_Producto int,
+	@Cantidad int
+AS   
+
+	UPDATE Compra SET Total=Total + ((SELECT Precio_Venta FROM Producto WHERE Codigo_Producto = @Codigo_Producto) * @Cantidad)
+		WHERE Codigo_Compra = @Codigo_Compra; 
+		
+GO

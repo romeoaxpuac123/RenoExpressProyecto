@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\Producto_SucursalController.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Models\Proveedor.cs">
       <DependentUpon>BDDRenoExpress.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Request\CompraRequest.cs" />
     <Compile Include="Models\Sucursal.cs">
       <DependentUpon>BDDRenoExpress.tt</DependentUpon>
     </Compile>

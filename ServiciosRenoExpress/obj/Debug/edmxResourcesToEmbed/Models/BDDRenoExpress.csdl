@@ -261,5 +261,17 @@
       <End Role="Sucursal" EntitySet="Sucursal" />
       <End Role="Producto_Sucursal" EntitySet="Producto_Sucursal" />
     </AssociationSet>
+    <FunctionImport Name="CrearCompra" ReturnType="Collection(Int32)">
+      <Parameter Name="Total" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarDetalleCompra">
+      <Parameter Name="Codigo_Compra" Mode="In" Type="Int32" />
+      <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
+      <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Ultima_Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha_Adquisicion" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
 </Schema>

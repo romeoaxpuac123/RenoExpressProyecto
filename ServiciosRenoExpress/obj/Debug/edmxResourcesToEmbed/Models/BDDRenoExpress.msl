@@ -108,5 +108,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CrearCompra" FunctionName="RenoExpressDBModel.Store.CrearCompra" />
+    <FunctionImportMapping FunctionImportName="RegistrarDetalleCompra" FunctionName="RenoExpressDBModel.Store.RegistrarDetalleCompra" />
   </EntityContainerMapping>
 </Mapping>

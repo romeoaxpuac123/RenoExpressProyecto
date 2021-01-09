@@ -12,6 +12,8 @@ namespace ServiciosRenoExpress.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class RenoExpressDBEntities : DbContext
     {
@@ -35,5 +37,47 @@ namespace ServiciosRenoExpress.Models
         public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
+    
+        public virtual ObjectResult<Nullable<int>> CrearCompra(Nullable<int> total, Nullable<System.DateTime> fecha)
+        {
+            var totalParameter = total.HasValue ?
+                new ObjectParameter("Total", total) :
+                new ObjectParameter("Total", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CrearCompra", totalParameter, fechaParameter);
+        }
+    
+        public virtual int RegistrarDetalleCompra(Nullable<int> codigo_Compra, Nullable<int> codigo_Producto, Nullable<int> codigo_Sucursal, Nullable<int> cantidad, Nullable<int> ultima_Cantidad, Nullable<System.DateTime> fecha_Adquisicion)
+        {
+            var codigo_CompraParameter = codigo_Compra.HasValue ?
+                new ObjectParameter("Codigo_Compra", codigo_Compra) :
+                new ObjectParameter("Codigo_Compra", typeof(int));
+    
+            var codigo_ProductoParameter = codigo_Producto.HasValue ?
+                new ObjectParameter("Codigo_Producto", codigo_Producto) :
+                new ObjectParameter("Codigo_Producto", typeof(int));
+    
+            var codigo_SucursalParameter = codigo_Sucursal.HasValue ?
+                new ObjectParameter("Codigo_Sucursal", codigo_Sucursal) :
+                new ObjectParameter("Codigo_Sucursal", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(int));
+    
+            var ultima_CantidadParameter = ultima_Cantidad.HasValue ?
+                new ObjectParameter("Ultima_Cantidad", ultima_Cantidad) :
+                new ObjectParameter("Ultima_Cantidad", typeof(int));
+    
+            var fecha_AdquisicionParameter = fecha_Adquisicion.HasValue ?
+                new ObjectParameter("Fecha_Adquisicion", fecha_Adquisicion) :
+                new ObjectParameter("Fecha_Adquisicion", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarDetalleCompra", codigo_CompraParameter, codigo_ProductoParameter, codigo_SucursalParameter, cantidadParameter, ultima_CantidadParameter, fecha_AdquisicionParameter);
+        }
     }
 }

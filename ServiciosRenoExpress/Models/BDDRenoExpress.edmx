@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RenoExpressDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RenoExpressDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="Codigo_Cliente" />
@@ -207,6 +207,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="CrearCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Total" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="RegistrarDetalleCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Compra" Type="int" Mode="In" />
+          <Parameter Name="Codigo_Producto" Type="int" Mode="In" />
+          <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Ultima_Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Fecha_Adquisicion" Type="date" Mode="In" />
+        </Function>
         <EntityContainer Name="RenoExpressDBModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
@@ -251,8 +263,7 @@
             <End Role="Producto_Sucursal" EntitySet="Producto_Sucursal" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RenoExpressDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -517,6 +528,18 @@
             <End Role="Sucursal" EntitySet="Sucursal" />
             <End Role="Producto_Sucursal" EntitySet="Producto_Sucursal" />
           </AssociationSet>
+          <FunctionImport Name="CrearCompra" ReturnType="Collection(Int32)">
+            <Parameter Name="Total" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrarDetalleCompra">
+            <Parameter Name="Codigo_Compra" Mode="In" Type="Int32" />
+            <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
+            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Ultima_Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha_Adquisicion" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -631,6 +654,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CrearCompra" FunctionName="RenoExpressDBModel.Store.CrearCompra" />
+          <FunctionImportMapping FunctionImportName="RegistrarDetalleCompra" FunctionName="RenoExpressDBModel.Store.RegistrarDetalleCompra" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
