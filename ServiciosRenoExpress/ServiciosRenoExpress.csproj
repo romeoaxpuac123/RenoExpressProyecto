@@ -162,6 +162,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BusquedasController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\FacturaController.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Models\Proveedor.cs">
       <DependentUpon>BDDRenoExpress.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Request\BusquedaRequest.cs" />
     <Compile Include="Models\Request\CompraRequest.cs" />
     <Compile Include="Models\Request\FacturaRequest.cs" />
     <Compile Include="Models\Request\InventarioRequest.cs" />

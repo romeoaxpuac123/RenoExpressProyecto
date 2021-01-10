@@ -7,6 +7,7 @@ namespace ServiciosRenoExpress.Models.Request
 {
     public class BusquedaRequest
     {
+        public int TipoBusqueda;
         public int Codigo_Sucursal;
         public string ParametroBusqueda;
     }
