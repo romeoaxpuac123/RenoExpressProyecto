@@ -214,6 +214,11 @@
     <Parameter Name="Ultima_Cantidad" Type="int" Mode="In" />
     <Parameter Name="Fecha_Adquisicion" Type="date" Mode="In" />
   </Function>
+  <Function Name="TotalCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo_Compra" Type="int" Mode="In" />
+    <Parameter Name="Codigo_Producto" Type="int" Mode="In" />
+    <Parameter Name="Cantidad" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="RenoExpressDBModelStoreContainer">
     <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />

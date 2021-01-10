@@ -18,7 +18,15 @@ namespace ServiciosRenoExpress.Controllers
         [HttpPost]
         public IHttpActionResult RegistrarCompra(ICollection<Models.Request.CompraRequest>  modelo )
         {
-
+            System.Diagnostics.Debug.WriteLine(modelo.Count);
+            string Fecha = DateTime.Now.ToString("dd/MM/yyyy");
+            DateTime DateObject = Convert.ToDateTime(Fecha);
+            int numerorder = Convert.ToInt32((db.CrearCompra(0, DateObject)).FirstOrDefault());
+            foreach (Models.Request.CompraRequest Dato1 in modelo)
+            {
+                db.RegistrarDetalleCompra(numerorder, Dato1.Codigo_Producto, Dato1.Codigo_Sucursal, Dato1.Cantidad, Dato1.Cantidad, DateObject);
+                db.TotalCompra(numerorder, Dato1.Codigo_Producto, Dato1.Cantidad);
+            }
             return Ok("EXITO");
         }
     }

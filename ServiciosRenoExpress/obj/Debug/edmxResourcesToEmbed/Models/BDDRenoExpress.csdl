@@ -273,5 +273,10 @@
       <Parameter Name="Ultima_Cantidad" Mode="In" Type="Int32" />
       <Parameter Name="Fecha_Adquisicion" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="TotalCompra">
+      <Parameter Name="Codigo_Compra" Mode="In" Type="Int32" />
+      <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
 </Schema>
