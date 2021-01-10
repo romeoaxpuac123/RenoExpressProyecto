@@ -211,6 +211,11 @@
           <Parameter Name="Total" Type="int" Mode="In" />
           <Parameter Name="Fecha" Type="date" Mode="In" />
         </Function>
+        <Function Name="CrearFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Total" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+          <Parameter Name="Codigo_Cliente" Type="int" Mode="In" />
+        </Function>
         <Function Name="RegistrarDetalleCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo_Compra" Type="int" Mode="In" />
           <Parameter Name="Codigo_Producto" Type="int" Mode="In" />
@@ -219,8 +224,21 @@
           <Parameter Name="Ultima_Cantidad" Type="int" Mode="In" />
           <Parameter Name="Fecha_Adquisicion" Type="date" Mode="In" />
         </Function>
+        <Function Name="RegistrarVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Factura" Type="int" Mode="In" />
+          <Parameter Name="Codigo_Producto" Type="int" Mode="In" />
+          <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Ultima_Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Fecha_Adquisicion" Type="date" Mode="In" />
+        </Function>
         <Function Name="TotalCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo_Compra" Type="int" Mode="In" />
+          <Parameter Name="Codigo_Producto" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TotalFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Factura" Type="int" Mode="In" />
           <Parameter Name="Codigo_Producto" Type="int" Mode="In" />
           <Parameter Name="Cantidad" Type="int" Mode="In" />
         </Function>
@@ -550,6 +568,24 @@
             <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="CrearFactura" ReturnType="Collection(Int32)">
+            <Parameter Name="Total" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Codigo_Cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrarVenta">
+            <Parameter Name="Codigo_Factura" Mode="In" Type="Int32" />
+            <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
+            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Ultima_Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha_Adquisicion" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="TotalFactura">
+            <Parameter Name="Codigo_Factura" Mode="In" Type="Int32" />
+            <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -667,6 +703,9 @@
           <FunctionImportMapping FunctionImportName="CrearCompra" FunctionName="RenoExpressDBModel.Store.CrearCompra" />
           <FunctionImportMapping FunctionImportName="RegistrarDetalleCompra" FunctionName="RenoExpressDBModel.Store.RegistrarDetalleCompra" />
           <FunctionImportMapping FunctionImportName="TotalCompra" FunctionName="RenoExpressDBModel.Store.TotalCompra" />
+          <FunctionImportMapping FunctionImportName="CrearFactura" FunctionName="RenoExpressDBModel.Store.CrearFactura" />
+          <FunctionImportMapping FunctionImportName="RegistrarVenta" FunctionName="RenoExpressDBModel.Store.RegistrarVenta" />
+          <FunctionImportMapping FunctionImportName="TotalFactura" FunctionName="RenoExpressDBModel.Store.TotalFactura" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

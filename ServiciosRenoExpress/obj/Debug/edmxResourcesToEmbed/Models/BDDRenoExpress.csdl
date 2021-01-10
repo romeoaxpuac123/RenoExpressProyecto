@@ -278,5 +278,23 @@
       <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
       <Parameter Name="Cantidad" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="CrearFactura" ReturnType="Collection(Int32)">
+      <Parameter Name="Total" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="Codigo_Cliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarVenta">
+      <Parameter Name="Codigo_Factura" Mode="In" Type="Int32" />
+      <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
+      <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Ultima_Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha_Adquisicion" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="TotalFactura">
+      <Parameter Name="Codigo_Factura" Mode="In" Type="Int32" />
+      <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
 </Schema>

@@ -96,5 +96,68 @@ namespace ServiciosRenoExpress.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TotalCompra", codigo_CompraParameter, codigo_ProductoParameter, cantidadParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> CrearFactura(Nullable<int> total, Nullable<System.DateTime> fecha, Nullable<int> codigo_Cliente)
+        {
+            var totalParameter = total.HasValue ?
+                new ObjectParameter("Total", total) :
+                new ObjectParameter("Total", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            var codigo_ClienteParameter = codigo_Cliente.HasValue ?
+                new ObjectParameter("Codigo_Cliente", codigo_Cliente) :
+                new ObjectParameter("Codigo_Cliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CrearFactura", totalParameter, fechaParameter, codigo_ClienteParameter);
+        }
+    
+        public virtual int RegistrarVenta(Nullable<int> codigo_Factura, Nullable<int> codigo_Producto, Nullable<int> codigo_Sucursal, Nullable<int> cantidad, Nullable<int> ultima_Cantidad, Nullable<System.DateTime> fecha_Adquisicion)
+        {
+            var codigo_FacturaParameter = codigo_Factura.HasValue ?
+                new ObjectParameter("Codigo_Factura", codigo_Factura) :
+                new ObjectParameter("Codigo_Factura", typeof(int));
+    
+            var codigo_ProductoParameter = codigo_Producto.HasValue ?
+                new ObjectParameter("Codigo_Producto", codigo_Producto) :
+                new ObjectParameter("Codigo_Producto", typeof(int));
+    
+            var codigo_SucursalParameter = codigo_Sucursal.HasValue ?
+                new ObjectParameter("Codigo_Sucursal", codigo_Sucursal) :
+                new ObjectParameter("Codigo_Sucursal", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(int));
+    
+            var ultima_CantidadParameter = ultima_Cantidad.HasValue ?
+                new ObjectParameter("Ultima_Cantidad", ultima_Cantidad) :
+                new ObjectParameter("Ultima_Cantidad", typeof(int));
+    
+            var fecha_AdquisicionParameter = fecha_Adquisicion.HasValue ?
+                new ObjectParameter("Fecha_Adquisicion", fecha_Adquisicion) :
+                new ObjectParameter("Fecha_Adquisicion", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarVenta", codigo_FacturaParameter, codigo_ProductoParameter, codigo_SucursalParameter, cantidadParameter, ultima_CantidadParameter, fecha_AdquisicionParameter);
+        }
+    
+        public virtual int TotalFactura(Nullable<int> codigo_Factura, Nullable<int> codigo_Producto, Nullable<int> cantidad)
+        {
+            var codigo_FacturaParameter = codigo_Factura.HasValue ?
+                new ObjectParameter("Codigo_Factura", codigo_Factura) :
+                new ObjectParameter("Codigo_Factura", typeof(int));
+    
+            var codigo_ProductoParameter = codigo_Producto.HasValue ?
+                new ObjectParameter("Codigo_Producto", codigo_Producto) :
+                new ObjectParameter("Codigo_Producto", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TotalFactura", codigo_FacturaParameter, codigo_ProductoParameter, cantidadParameter);
+        }
     }
 }

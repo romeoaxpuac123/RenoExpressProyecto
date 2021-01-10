@@ -111,5 +111,8 @@
     <FunctionImportMapping FunctionImportName="CrearCompra" FunctionName="RenoExpressDBModel.Store.CrearCompra" />
     <FunctionImportMapping FunctionImportName="RegistrarDetalleCompra" FunctionName="RenoExpressDBModel.Store.RegistrarDetalleCompra" />
     <FunctionImportMapping FunctionImportName="TotalCompra" FunctionName="RenoExpressDBModel.Store.TotalCompra" />
+    <FunctionImportMapping FunctionImportName="CrearFactura" FunctionName="RenoExpressDBModel.Store.CrearFactura" />
+    <FunctionImportMapping FunctionImportName="RegistrarVenta" FunctionName="RenoExpressDBModel.Store.RegistrarVenta" />
+    <FunctionImportMapping FunctionImportName="TotalFactura" FunctionName="RenoExpressDBModel.Store.TotalFactura" />
   </EntityContainerMapping>
 </Mapping>
