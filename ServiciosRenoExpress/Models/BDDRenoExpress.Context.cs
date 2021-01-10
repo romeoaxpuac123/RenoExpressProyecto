@@ -159,5 +159,71 @@ namespace ServiciosRenoExpress.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TotalFactura", codigo_FacturaParameter, codigo_ProductoParameter, cantidadParameter);
         }
+    
+        public virtual ObjectResult<CatalogoSucursal_Result> CatalogoSucursal(Nullable<int> codigo_Sucursal)
+        {
+            var codigo_SucursalParameter = codigo_Sucursal.HasValue ?
+                new ObjectParameter("Codigo_Sucursal", codigo_Sucursal) :
+                new ObjectParameter("Codigo_Sucursal", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CatalogoSucursal_Result>("CatalogoSucursal", codigo_SucursalParameter);
+        }
+    
+        public virtual ObjectResult<ProductosPorCategoria_Result> ProductosPorCategoria(Nullable<int> codigo_Sucursal, string categoria)
+        {
+            var codigo_SucursalParameter = codigo_Sucursal.HasValue ?
+                new ObjectParameter("Codigo_Sucursal", codigo_Sucursal) :
+                new ObjectParameter("Codigo_Sucursal", typeof(int));
+    
+            var categoriaParameter = categoria != null ?
+                new ObjectParameter("Categoria", categoria) :
+                new ObjectParameter("Categoria", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductosPorCategoria_Result>("ProductosPorCategoria", codigo_SucursalParameter, categoriaParameter);
+        }
+    
+        public virtual ObjectResult<ProductosPorCodigo_Result> ProductosPorCodigo(Nullable<int> codigo_Sucursal, Nullable<int> codigo)
+        {
+            var codigo_SucursalParameter = codigo_Sucursal.HasValue ?
+                new ObjectParameter("Codigo_Sucursal", codigo_Sucursal) :
+                new ObjectParameter("Codigo_Sucursal", typeof(int));
+    
+            var codigoParameter = codigo.HasValue ?
+                new ObjectParameter("Codigo", codigo) :
+                new ObjectParameter("Codigo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductosPorCodigo_Result>("ProductosPorCodigo", codigo_SucursalParameter, codigoParameter);
+        }
+    
+        public virtual ObjectResult<ProductosPorNombre_Result> ProductosPorNombre(Nullable<int> codigo_Sucursal, string nombre)
+        {
+            var codigo_SucursalParameter = codigo_Sucursal.HasValue ?
+                new ObjectParameter("Codigo_Sucursal", codigo_Sucursal) :
+                new ObjectParameter("Codigo_Sucursal", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductosPorNombre_Result>("ProductosPorNombre", codigo_SucursalParameter, nombreParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> Promedio(Nullable<int> codigo_Sucursal)
+        {
+            var codigo_SucursalParameter = codigo_Sucursal.HasValue ?
+                new ObjectParameter("Codigo_Sucursal", codigo_Sucursal) :
+                new ObjectParameter("Codigo_Sucursal", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("Promedio", codigo_SucursalParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> TotalJuguetes(Nullable<int> codigo_Sucursal)
+        {
+            var codigo_SucursalParameter = codigo_Sucursal.HasValue ?
+                new ObjectParameter("Codigo_Sucursal", codigo_Sucursal) :
+                new ObjectParameter("Codigo_Sucursal", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("TotalJuguetes", codigo_SucursalParameter);
+        }
     }
 }

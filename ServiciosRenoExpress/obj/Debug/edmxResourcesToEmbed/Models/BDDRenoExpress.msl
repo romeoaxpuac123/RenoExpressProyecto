@@ -114,5 +114,63 @@
     <FunctionImportMapping FunctionImportName="CrearFactura" FunctionName="RenoExpressDBModel.Store.CrearFactura" />
     <FunctionImportMapping FunctionImportName="RegistrarVenta" FunctionName="RenoExpressDBModel.Store.RegistrarVenta" />
     <FunctionImportMapping FunctionImportName="TotalFactura" FunctionName="RenoExpressDBModel.Store.TotalFactura" />
+    <FunctionImportMapping FunctionImportName="CatalogoSucursal" FunctionName="RenoExpressDBModel.Store.CatalogoSucursal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RenoExpressDBModel.CatalogoSucursal_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+          <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Abastecimiento" ColumnName="Abastecimiento" />
+          <ScalarProperty Name="Recarga" ColumnName="Recarga" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProductosPorCategoria" FunctionName="RenoExpressDBModel.Store.ProductosPorCategoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RenoExpressDBModel.ProductosPorCategoria_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+          <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Abastecimiento" ColumnName="Abastecimiento" />
+          <ScalarProperty Name="Recarga" ColumnName="Recarga" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProductosPorCodigo" FunctionName="RenoExpressDBModel.Store.ProductosPorCodigo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RenoExpressDBModel.ProductosPorCodigo_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+          <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Abastecimiento" ColumnName="Abastecimiento" />
+          <ScalarProperty Name="Recarga" ColumnName="Recarga" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProductosPorNombre" FunctionName="RenoExpressDBModel.Store.ProductosPorNombre">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RenoExpressDBModel.ProductosPorNombre_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+          <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Abastecimiento" ColumnName="Abastecimiento" />
+          <ScalarProperty Name="Recarga" ColumnName="Recarga" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Promedio" FunctionName="RenoExpressDBModel.Store.Promedio" />
+    <FunctionImportMapping FunctionImportName="TotalJuguetes" FunctionName="RenoExpressDBModel.Store.TotalJuguetes" />
   </EntityContainerMapping>
 </Mapping>

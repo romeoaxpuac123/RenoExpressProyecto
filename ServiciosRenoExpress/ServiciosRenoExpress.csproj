@@ -166,6 +166,7 @@
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\FacturaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\Producto_SucursalController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
@@ -189,6 +190,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDDRenoExpress.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\CatalogoSucursal_Result.cs">
+      <DependentUpon>BDDRenoExpress.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cliente.cs">
       <DependentUpon>BDDRenoExpress.tt</DependentUpon>
     </Compile>
@@ -204,6 +208,15 @@
     <Compile Include="Models\Producto.cs">
       <DependentUpon>BDDRenoExpress.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductosPorCategoria_Result.cs">
+      <DependentUpon>BDDRenoExpress.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductosPorCodigo_Result.cs">
+      <DependentUpon>BDDRenoExpress.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductosPorNombre_Result.cs">
+      <DependentUpon>BDDRenoExpress.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Producto_Sucursal.cs">
       <DependentUpon>BDDRenoExpress.tt</DependentUpon>
     </Compile>
@@ -212,6 +225,7 @@
     </Compile>
     <Compile Include="Models\Request\CompraRequest.cs" />
     <Compile Include="Models\Request\FacturaRequest.cs" />
+    <Compile Include="Models\Request\InventarioRequest.cs" />
     <Compile Include="Models\Sucursal.cs">
       <DependentUpon>BDDRenoExpress.tt</DependentUpon>
     </Compile>

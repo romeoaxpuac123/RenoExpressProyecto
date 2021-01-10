@@ -296,5 +296,66 @@
       <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
       <Parameter Name="Cantidad" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="CatalogoSucursal" ReturnType="Collection(RenoExpressDBModel.CatalogoSucursal_Result)">
+      <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProductosPorCategoria" ReturnType="Collection(RenoExpressDBModel.ProductosPorCategoria_Result)">
+      <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+      <Parameter Name="Categoria" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProductosPorCodigo" ReturnType="Collection(RenoExpressDBModel.ProductosPorCodigo_Result)">
+      <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+      <Parameter Name="Codigo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProductosPorNombre" ReturnType="Collection(RenoExpressDBModel.ProductosPorNombre_Result)">
+      <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Promedio" ReturnType="Collection(Decimal)">
+      <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TotalJuguetes" ReturnType="Collection(Int32)">
+      <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="CatalogoSucursal_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Categoria" Nullable="false" MaxLength="150" />
+    <Property Type="Int32" Name="Codigo_Producto" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Venta" Nullable="false" Precision="4" Scale="2" />
+    <Property Type="Int32" Name="Stock" Nullable="false" />
+    <Property Type="DateTime" Name="Abastecimiento" Nullable="false" />
+    <Property Type="Int32" Name="Recarga" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ProductosPorCategoria_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Categoria" Nullable="false" MaxLength="150" />
+    <Property Type="Int32" Name="Codigo_Producto" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Venta" Nullable="false" Precision="4" Scale="2" />
+    <Property Type="Int32" Name="Stock" Nullable="false" />
+    <Property Type="DateTime" Name="Abastecimiento" Nullable="false" />
+    <Property Type="Int32" Name="Recarga" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ProductosPorCodigo_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Categoria" Nullable="false" MaxLength="150" />
+    <Property Type="Int32" Name="Codigo_Producto" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Venta" Nullable="false" Precision="4" Scale="2" />
+    <Property Type="Int32" Name="Stock" Nullable="false" />
+    <Property Type="DateTime" Name="Abastecimiento" Nullable="false" />
+    <Property Type="Int32" Name="Recarga" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ProductosPorNombre_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Categoria" Nullable="false" MaxLength="150" />
+    <Property Type="Int32" Name="Codigo_Producto" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Venta" Nullable="false" Precision="4" Scale="2" />
+    <Property Type="Int32" Name="Stock" Nullable="false" />
+    <Property Type="DateTime" Name="Abastecimiento" Nullable="false" />
+    <Property Type="Int32" Name="Recarga" Nullable="false" />
+  </ComplexType>
 </Schema>

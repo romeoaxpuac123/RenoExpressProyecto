@@ -207,6 +207,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="CatalogoSucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+        </Function>
         <Function Name="CrearCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Total" Type="int" Mode="In" />
           <Parameter Name="Fecha" Type="date" Mode="In" />
@@ -215,6 +218,21 @@
           <Parameter Name="Total" Type="int" Mode="In" />
           <Parameter Name="Fecha" Type="date" Mode="In" />
           <Parameter Name="Codigo_Cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProductosPorCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+          <Parameter Name="Categoria" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProductosPorCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+          <Parameter Name="Codigo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ProductosPorNombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Promedio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
         </Function>
         <Function Name="RegistrarDetalleCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Codigo_Compra" Type="int" Mode="In" />
@@ -241,6 +259,9 @@
           <Parameter Name="Codigo_Factura" Type="int" Mode="In" />
           <Parameter Name="Codigo_Producto" Type="int" Mode="In" />
           <Parameter Name="Cantidad" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TotalJuguetes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="RenoExpressDBModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
@@ -586,7 +607,68 @@
             <Parameter Name="Codigo_Producto" Mode="In" Type="Int32" />
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="CatalogoSucursal" ReturnType="Collection(RenoExpressDBModel.CatalogoSucursal_Result)">
+            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProductosPorCategoria" ReturnType="Collection(RenoExpressDBModel.ProductosPorCategoria_Result)">
+            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+            <Parameter Name="Categoria" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProductosPorCodigo" ReturnType="Collection(RenoExpressDBModel.ProductosPorCodigo_Result)">
+            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+            <Parameter Name="Codigo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProductosPorNombre" ReturnType="Collection(RenoExpressDBModel.ProductosPorNombre_Result)">
+            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Promedio" ReturnType="Collection(Decimal)">
+            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TotalJuguetes" ReturnType="Collection(Int32)">
+            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="CatalogoSucursal_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Categoria" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="Codigo_Producto" Nullable="false" />
+          <Property Type="Decimal" Name="Precio_Venta" Nullable="false" Precision="4" Scale="2" />
+          <Property Type="Int32" Name="Stock" Nullable="false" />
+          <Property Type="DateTime" Name="Abastecimiento" Nullable="false" />
+          <Property Type="Int32" Name="Recarga" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ProductosPorCategoria_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Categoria" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="Codigo_Producto" Nullable="false" />
+          <Property Type="Decimal" Name="Precio_Venta" Nullable="false" Precision="4" Scale="2" />
+          <Property Type="Int32" Name="Stock" Nullable="false" />
+          <Property Type="DateTime" Name="Abastecimiento" Nullable="false" />
+          <Property Type="Int32" Name="Recarga" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ProductosPorCodigo_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Categoria" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="Codigo_Producto" Nullable="false" />
+          <Property Type="Decimal" Name="Precio_Venta" Nullable="false" Precision="4" Scale="2" />
+          <Property Type="Int32" Name="Stock" Nullable="false" />
+          <Property Type="DateTime" Name="Abastecimiento" Nullable="false" />
+          <Property Type="Int32" Name="Recarga" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ProductosPorNombre_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Categoria" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="Codigo_Producto" Nullable="false" />
+          <Property Type="Decimal" Name="Precio_Venta" Nullable="false" Precision="4" Scale="2" />
+          <Property Type="Int32" Name="Stock" Nullable="false" />
+          <Property Type="DateTime" Name="Abastecimiento" Nullable="false" />
+          <Property Type="Int32" Name="Recarga" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -706,6 +788,64 @@
           <FunctionImportMapping FunctionImportName="CrearFactura" FunctionName="RenoExpressDBModel.Store.CrearFactura" />
           <FunctionImportMapping FunctionImportName="RegistrarVenta" FunctionName="RenoExpressDBModel.Store.RegistrarVenta" />
           <FunctionImportMapping FunctionImportName="TotalFactura" FunctionName="RenoExpressDBModel.Store.TotalFactura" />
+          <FunctionImportMapping FunctionImportName="CatalogoSucursal" FunctionName="RenoExpressDBModel.Store.CatalogoSucursal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RenoExpressDBModel.CatalogoSucursal_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Abastecimiento" ColumnName="Abastecimiento" />
+                <ScalarProperty Name="Recarga" ColumnName="Recarga" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProductosPorCategoria" FunctionName="RenoExpressDBModel.Store.ProductosPorCategoria">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RenoExpressDBModel.ProductosPorCategoria_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Abastecimiento" ColumnName="Abastecimiento" />
+                <ScalarProperty Name="Recarga" ColumnName="Recarga" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProductosPorCodigo" FunctionName="RenoExpressDBModel.Store.ProductosPorCodigo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RenoExpressDBModel.ProductosPorCodigo_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Abastecimiento" ColumnName="Abastecimiento" />
+                <ScalarProperty Name="Recarga" ColumnName="Recarga" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProductosPorNombre" FunctionName="RenoExpressDBModel.Store.ProductosPorNombre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RenoExpressDBModel.ProductosPorNombre_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Abastecimiento" ColumnName="Abastecimiento" />
+                <ScalarProperty Name="Recarga" ColumnName="Recarga" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Promedio" FunctionName="RenoExpressDBModel.Store.Promedio" />
+          <FunctionImportMapping FunctionImportName="TotalJuguetes" FunctionName="RenoExpressDBModel.Store.TotalJuguetes" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

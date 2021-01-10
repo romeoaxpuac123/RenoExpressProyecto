@@ -202,6 +202,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="CatalogoSucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+  </Function>
   <Function Name="CrearCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Total" Type="int" Mode="In" />
     <Parameter Name="Fecha" Type="date" Mode="In" />
@@ -210,6 +213,21 @@
     <Parameter Name="Total" Type="int" Mode="In" />
     <Parameter Name="Fecha" Type="date" Mode="In" />
     <Parameter Name="Codigo_Cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProductosPorCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+    <Parameter Name="Categoria" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProductosPorCodigo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+    <Parameter Name="Codigo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProductosPorNombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Promedio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
   </Function>
   <Function Name="RegistrarDetalleCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Codigo_Compra" Type="int" Mode="In" />
@@ -236,6 +254,9 @@
     <Parameter Name="Codigo_Factura" Type="int" Mode="In" />
     <Parameter Name="Codigo_Producto" Type="int" Mode="In" />
     <Parameter Name="Cantidad" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TotalJuguetes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Codigo_Sucursal" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="RenoExpressDBModelStoreContainer">
     <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
