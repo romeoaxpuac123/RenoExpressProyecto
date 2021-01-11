@@ -608,7 +608,7 @@
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="CatalogoSucursal" ReturnType="Collection(RenoExpressDBModel.CatalogoSucursal_Result)">
-            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+          <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ProductosPorCategoria" ReturnType="Collection(RenoExpressDBModel.ProductosPorCategoria_Result)">
             <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
@@ -623,10 +623,10 @@
             <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Promedio" ReturnType="Collection(Decimal)">
-            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+          <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="TotalJuguetes" ReturnType="Collection(Int32)">
-            <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
+          <Parameter Name="Codigo_Sucursal" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="CatalogoSucursal_Result">

@@ -97,3 +97,6 @@ D:\Forza\RenoExpressProyecto\ServiciosRenoExpress\obj\Debug\ServiciosRenoExpress
 D:\Forza\RenoExpressProyecto\ServiciosRenoExpress\obj\Debug\ServiciosRenoExpress.csproj.CopyComplete
 D:\Forza\RenoExpressProyecto\ServiciosRenoExpress\obj\Debug\ServiciosRenoExpress.dll
 D:\Forza\RenoExpressProyecto\ServiciosRenoExpress\obj\Debug\ServiciosRenoExpress.pdb
+D:\Forza\RenoExpressProyecto\ServiciosRenoExpress\bin\System.Web.Cors.dll
+D:\Forza\RenoExpressProyecto\ServiciosRenoExpress\bin\System.Web.Http.Cors.dll
+D:\Forza\RenoExpressProyecto\ServiciosRenoExpress\bin\System.Web.Http.Cors.xml
