@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ServiciosRenoExpress.Models;
+using System.Web.Http.Cors;
 
 namespace ServiciosRenoExpress.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class BusquedasController : ApiController
     {
         private RenoExpressDBEntities db = new RenoExpressDBEntities();
