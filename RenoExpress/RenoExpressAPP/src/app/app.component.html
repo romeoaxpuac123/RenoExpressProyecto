@@ -31,7 +31,7 @@
     <ul class="nav-links">
       <li class="nav-link"><label for="image1">HOME</label></li>
       <li class="nav-link"><label for="image2">INVENTARIO</label></li>
-      <li class="nav-link"><label for="image3">COMPRAR</label></li>
+      <li class="nav-link"><label for="image3">BUSQUEDA</label></li>
       <li class="nav-link"><label for="image4">VENDER</label></li>
     </ul>
     <div class="nav-images">
@@ -67,7 +67,7 @@
                 <td>{{inventario.Descripcion}}</td>
                 <td>{{inventario.Categoria}}</td>
                 <td>{{inventario.Codigo_Producto}}</td>
-                <td>{{inventario.Precio_Venta}}</td>
+                <td>Q. {{inventario.Precio_Venta}}</td>
                 <td>{{inventario.Stock}}</td>
                 <td>{{inventario.Abastecimiento}}</td>
                 <td>{{inventario.Recarga}}</td>
@@ -76,11 +76,64 @@
             </tbody>
           </table>
            
+          <table class="table">
+            <thead>
+              <tr class="success"  >
+                <th>Total Juguetes</th>
+                <th>{{TotalProductos}}</th>
+                <th>Promedio</th>
+                <th>Q. {{PromedioProductos}}</th>
+              </tr>
+            </thead>
+           
+          </table>
         </div>
         
 
       </div>
-      <div class="nav-image image-3"></div>
+      <div class="nav-image image-3">
+        <div class="card mt-8" style="margin: 100px">
+          <fieldset>      
+            <legend>Selecciones la busqueda a Realizar</legend>
+            <input type="checkbox" name="Metodo_Busqueda" value="Categoria">Categoria     
+            <input type="checkbox" name="Metodo_Busqueda" value="Nombre">Nombre      
+            <input type="checkbox" name="Metodo_Busqueda" value="Codigo">Codigo      
+            <br>      
+            <br>
+        </fieldset> 
+          <table class="table">
+            <thead>
+              <tr class="success">
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Categoria</th>
+                <th>Codigo</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Abestecimiento</th>
+                <th>Recarga</th>
+              </tr>
+            </thead>
+            <tbody>
+    
+              <tr class="info" *ngFor="let inventario of productosBusqueda;" >
+                
+                <td>{{inventario.Nombre}}</td>
+                <td>{{inventario.Descripcion}}</td>
+                <td>{{inventario.Categoria}}</td>
+                <td>{{inventario.Codigo_Producto}}</td>
+                <td>Q. {{inventario.Precio_Venta}}</td>
+                <td>{{inventario.Stock}}</td>
+                <td>{{inventario.Abastecimiento}}</td>
+                <td>{{inventario.Recarga}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+           
+         
+        </div>
+      </div>
       <div class="nav-image image-4"></div>
       <div class="nav-image image-5"></div>
       <div class="nav-image image-6"></div>
@@ -89,8 +142,8 @@
       <div class="nav-image image-9"></div>
       <div class="nav-image image-10"></div>
       <form class="nav-search-box" action="#">
-        <input type="search" name="search" placeholder="Your keyword here..." />
-        <button type="button">Search</button>
+        <input type="search" name="search" id = "search" placeholder="Your keyword here..." />
+        <button (click)= "ObtenerBusqueda()" type="button">Search</button>
       </form>
     </div>
   </div>

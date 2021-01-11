@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class InventarioService {
-_url = 'https://localhost:44351/api/Inventario'
 constructor(private http:HttpClient) {
  
 }
