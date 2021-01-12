@@ -12,7 +12,7 @@ using ServiciosRenoExpress.Models;
 using System.Web.Http.Cors;
 namespace ServiciosRenoExpress.Controllers
 {
-    [EnableCors(origins: "  ", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class ComprasController : ApiController
     {
         private RenoExpressDBEntities db = new RenoExpressDBEntities();
