@@ -32,7 +32,7 @@
       <li class="nav-link"><label for="image1">HOME</label></li>
       <li class="nav-link"><label for="image2">INVENTARIO</label></li>
       <li class="nav-link"><label for="image3">BUSQUEDA</label></li>
-      <li class="nav-link"><label for="image4">VENDER</label></li>
+      <li class="nav-link"><label for="image4">COMPRA/VENTA</label></li>
     </ul>
     <div class="nav-images">
       <div class="nav-image image-1">
@@ -95,9 +95,9 @@
         <div class="card mt-8" style="margin: 100px">
           <fieldset>      
             <legend>Selecciones la busqueda a Realizar</legend>
-            <input type="checkbox" name="Metodo_Busqueda" value="Categoria">Categoria     
-            <input type="checkbox" name="Metodo_Busqueda" value="Nombre">Nombre      
-            <input type="checkbox" name="Metodo_Busqueda" value="Codigo">Codigo      
+            <input type="checkbox" name="Metodo_Busqueda"  [(ngModel)]='TipoBusqueda1' value="Categoria">Categoria     
+            <input type="checkbox" name="Metodo_Busqueda" [(ngModel)]='TipoBusqueda2' value="Nombre">Nombre      
+            <input type="checkbox" name="Metodo_Busqueda" [(ngModel)]='TipoBusqueda3' value="Codigo">Codigo      
             <br>      
             <br>
         </fieldset> 
@@ -134,7 +134,73 @@
          
         </div>
       </div>
-      <div class="nav-image image-4"></div>
+      <div class="nav-image image-4">
+        <div class="card mt-8" style="margin: 100px">
+          
+          <table class="table">
+            <thead>
+              <tr class="success">
+                <th>
+                  <fieldset>      
+                    <legend>Selecciones la Operacion a Realizar</legend>
+                    <input type="checkbox" name="Operacion1"  [(ngModel)]='Compra' value="Compra">COMPRA    
+                    <input type="checkbox" name="operacion2" [(ngModel)]='Venta' value="Venta">VENTA      
+                    <br>      
+                    <br>
+                </fieldset>
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+    
+              <tr class="info">
+                
+                <td>
+                  <form class="form">
+                    <h2>DATOS</h2>
+                    <input type="text" name="Cliente"  [(ngModel)]='Cliente' id = "Cliente" placeholder="Nombre"><br>
+                    <input type="text" name="NIT"  [(ngModel)]='NITC' id = "NIT" placeholder="NIT"><br>
+                    <input type="text" name="DIRECCION"  [(ngModel)]='Direccion' id = "Direccion" placeholder="Direccion"><br>
+                    <button type="button"  (click)= "RegistrarMovimiento()" >Registrar</button>
+                    
+                  </form>
+
+                </td>
+                <td>
+                  <h2>PRODUCTOS</h2>
+                  <table class="table">
+                    <thead>
+                      <tr class="success">
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Tienda</th>
+                        <th>Cantidad</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+            
+                      <tr class="info" *ngFor="let inventario of Productos;" >
+                        
+                        <td>{{inventario.Codigo_Producto}}</td>
+                        <td>Carrito</td>
+                        <td>{{inventario.Codigo_Sucursal}}</td>
+                        <td>{{inventario.Cantidad}}</td>
+                      </tr>
+        
+                    </tbody>
+                  </table>
+                 
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+
+         
+        </div>
+      </div>
       <div class="nav-image image-5"></div>
       <div class="nav-image image-6"></div>
       <div class="nav-image image-7"></div>
@@ -142,8 +208,8 @@
       <div class="nav-image image-9"></div>
       <div class="nav-image image-10"></div>
       <form class="nav-search-box" action="#">
-        <input type="search" name="search" id = "search" placeholder="Your keyword here..." />
-        <button (click)= "ObtenerBusqueda()" type="button">Search</button>
+        <input type="search" name="search"  [(ngModel)]='ParametroBusqueda2' id = "search" placeholder="Buscar..." />
+        <button (click)= "ObtenerBusqueda()" type="button" >Search</button>
       </form>
     </div>
   </div>
