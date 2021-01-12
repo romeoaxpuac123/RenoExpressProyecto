@@ -9,9 +9,10 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ServiciosRenoExpress.Models;
-
+using System.Web.Http.Cors;
 namespace ServiciosRenoExpress.Controllers
 {
+    [EnableCors(origins: "  ", headers: "*", methods: "*")]
     public class ComprasController : ApiController
     {
         private RenoExpressDBEntities db = new RenoExpressDBEntities();
