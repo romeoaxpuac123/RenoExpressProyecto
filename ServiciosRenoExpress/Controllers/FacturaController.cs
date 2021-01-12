@@ -36,7 +36,7 @@ namespace ServiciosRenoExpress.Controllers
                 db.TotalFactura(numerorder, Dato1.Codigo_Producto, Dato1.Cantidad);
             }
             
-            return Ok("EXITO");
+            return Ok(" FACTURA EXITOSA");
         }
     }
 }
